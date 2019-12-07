@@ -6,7 +6,7 @@ module.exports = {
     node: true,
     jest: true
   },
-  extends: 'eslint:recommended',
+  extends: 'standard',
   parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module',
@@ -38,7 +38,6 @@ module.exports = {
     indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
-    semi: ['error', 'always'],
     'react/jsx-uses-vars': 1,
     'react/jsx-uses-react': 1,
     'spaced-comment': ['error', 'always', { exceptions: ['-', '+'] }],
