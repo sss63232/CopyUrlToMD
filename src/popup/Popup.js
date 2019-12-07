@@ -1,25 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Popup.css'
+import Success from './Success/Success'
+import { getMDLink } from './util'
+import copy from 'copy-to-clipboard'
+import { Button } from 'antd'
 
-const TechStackLogos = () => {
-  return (
-    <div className='tech-logos'>
-      <img className='logo' src='/img/react.svg' alt='ReactJS logo' title='ReactJS' />
-      <img className='logo' src='/img/webpack.svg' alt='Webpack logo' title='Webpack' />
-      <img className='logo' src='/img/eslint.svg' alt='ESLint logo' title='ESLint' />
-      <img className='logo' src='/img/jest.svg' alt='Jest logo' title='Jest' />
-    </div>
-  )
-}
+/* globals browser */
+
+const getTabsBy = (queryInfo = {}) => browser.tabs.query(queryInfo)
+
+const getCurrentActiveTabs = () => getTabsBy({
+  currentWindow: true,
+  active: true
+})
 
 const Popup = () => {
+  const [hasCopied, setHasCopied] = useState(false)
+  const [copiedUrl, setCopiedUrl] = useState()
+
+  useEffect(
+    () => {
+      getCurrentActiveTabs()
+        .then(
+          tabs => {
+            const { title, url } = tabs[0]
+            const mdLink = getMDLink(title, url)
+            const copySucceed = copy(mdLink)
+            if (copySucceed) {
+              setHasCopied(true)
+              setCopiedUrl(mdLink)
+            }
+          }
+        )
+    },
+    []
+  )
+
   return (
     <div className='popup'>
-      <p className='popup-greet'>Thanks for using <span className='brand'>Modern extension Boilerplate</span></p>
-      aaaaaaaaaaaaaaa
-      <p className='stack-head'>Made using :</p>
-      <TechStackLogos />
-      <p className='contrib-msg'>We would love some of your help in making this boilerplate even better. <br /><a href='https://www.github.com/kryptokinght/react-extension-boilerplate' target='_blank'>React Extension Boilerplate</a></p>
+      <Button type='primary'>Primary</Button>
+      {hasCopied && <Success copiedLink={copiedUrl} />}
+
     </div>
   )
 }
