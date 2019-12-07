@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import './Popup.css'
+import styles from './Popup.module.css'
 import Success from './Success/Success'
 import { getMDLink } from './util'
 import copy from 'copy-to-clipboard'
-import { Button } from 'antd'
 
 /* globals browser */
 
@@ -37,8 +36,7 @@ const Popup = () => {
   )
 
   return (
-    <div className='popup'>
-      <Button type='primary'>Primary</Button>
+    <div className={styles.popup}>
       {hasCopied && <Success copiedLink={copiedUrl} />}
 
     </div>
