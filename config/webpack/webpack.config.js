@@ -1,49 +1,47 @@
-const fs = require('fs');
-const path = require('path');
-const PnpWebpackPlugin = require('pnp-webpack-plugin');
+const fs = require('fs')
+const path = require('path')
+const PnpWebpackPlugin = require('pnp-webpack-plugin')
 
-const paths = require('../paths');
-const initLoaders = require('./loaders');
-const initPlugins = require('./plugins');
-require('../env');
+const paths = require('../paths')
+const initLoaders = require('./loaders')
+const initPlugins = require('./plugins')
+require('../env')
 
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-const useTypeScript = fs.existsSync(paths.appTsConfig);
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
+const useTypeScript = fs.existsSync(paths.appTsConfig)
 
-const doesOptionsExist = fs.existsSync(paths.appOptionsJs);
-const doesOptionsHtmlExist = fs.existsSync(paths.optionsTemplate);
-const doesPopupExist = fs.existsSync(paths.appPopupJs);
-const doesPopupHtmlExist = fs.existsSync(paths.popupTemplate);
-const doesSidebarExist = fs.existsSync(paths.appSidebarJs);
-const doesSidebarHtmlExist = fs.existsSync(paths.sidebarTemplate);
-const doesBackgroundExist = fs.existsSync(paths.appBackgroundJs);
-const doesContentExist = fs.existsSync(paths.appContentJs);
-
-
+const doesOptionsExist = fs.existsSync(paths.appOptionsJs)
+const doesOptionsHtmlExist = fs.existsSync(paths.optionsTemplate)
+const doesPopupExist = fs.existsSync(paths.appPopupJs)
+const doesPopupHtmlExist = fs.existsSync(paths.popupTemplate)
+const doesSidebarExist = fs.existsSync(paths.appSidebarJs)
+const doesSidebarHtmlExist = fs.existsSync(paths.sidebarTemplate)
+const doesBackgroundExist = fs.existsSync(paths.appBackgroundJs)
+const doesContentExist = fs.existsSync(paths.appContentJs)
 
 module.exports = function (webpackEnv) {
-  const isEnvDevelopment = webpackEnv === 'development';
-  const isEnvProduction = webpackEnv === 'production';
+  const isEnvDevelopment = webpackEnv === 'development'
+  const isEnvProduction = webpackEnv === 'production'
 
   const publicPath = isEnvProduction
     ? paths.servedPath
-    : isEnvDevelopment && '/';
-  const shouldUseRelativeAssetPaths = publicPath === './';
+    : isEnvDevelopment && '/'
+  const shouldUseRelativeAssetPaths = publicPath === './'
 
-  const loaders = initLoaders(isEnvProduction, isEnvDevelopment, shouldUseRelativeAssetPaths, shouldUseSourceMap);
-  const plugins = initPlugins(isEnvProduction, shouldUseSourceMap);
+  const loaders = initLoaders(isEnvProduction, isEnvDevelopment, shouldUseRelativeAssetPaths, shouldUseSourceMap)
+  const plugins = initPlugins(isEnvProduction, shouldUseSourceMap)
 
   // named entry cannot be stored in an array and has to be stored inside an object
   const entryArray = [
-    doesBackgroundExist && { 'background': paths.appBackgroundJs },
-    doesPopupExist && { 'popup': paths.appPopupJs },
-    doesContentExist && { 'content': paths.appContentJs },
-    doesSidebarExist && { 'sidebar': paths.appSidebarJs },
-    doesOptionsExist && { 'options': paths.appOptionsJs },
-  ].filter(Boolean);
+    doesBackgroundExist && { background: paths.appBackgroundJs },
+    doesPopupExist && { popup: paths.appPopupJs },
+    doesContentExist && { content: paths.appContentJs },
+    doesSidebarExist && { sidebar: paths.appSidebarJs },
+    doesOptionsExist && { options: paths.appOptionsJs }
+  ].filter(Boolean)
 
-  const entry = {};
-  entryArray.forEach(obj => { Object.assign(entry, obj); });
+  const entry = {}
+  entryArray.forEach(obj => { Object.assign(entry, obj) })
 
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
@@ -61,13 +59,13 @@ module.exports = function (webpackEnv) {
           .relative(paths.appSrc, info.absoluteResourcePath)
           .replace(/\\/g, '/')
         : isEnvDevelopment &&
-        (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+        (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'))
     },
     optimization: {
       minimize: isEnvProduction,
       minimizer: [
         plugins.terserPlugin,
-        plugins.optimizeCSSAssetsPlugin,
+        plugins.optimizeCSSAssetsPlugin
       ]
     },
     resolve: {
@@ -79,13 +77,13 @@ module.exports = function (webpackEnv) {
         .filter(ext => useTypeScript || !ext.includes('ts')),
       plugins: [
         PnpWebpackPlugin,
-        plugins.moduleScopePlugin,
-      ],
+        plugins.moduleScopePlugin
+      ]
     },
     resolveLoader: {
       plugins: [
-        PnpWebpackPlugin.moduleLoader(module),
-      ],
+        PnpWebpackPlugin.moduleLoader(module)
+      ]
     },
     module: {
       strictExportPresence: true,
@@ -93,7 +91,7 @@ module.exports = function (webpackEnv) {
         { parser: { requireEnsure: false } },
         loaders.eslintLoader,
         {
-          // "oneOf" will traverse all following loaders until one will match the requirements. 
+          // "oneOf" will traverse all following loaders until one will match the requirements.
           // When no loader matches it will fall back to the "file" loader at the end of the loader list.
           oneOf: [
             loaders.urlLoader,
@@ -104,9 +102,9 @@ module.exports = function (webpackEnv) {
             loaders.fileLoader
             // ** STOP ** Are you adding a new loader?
             // Make sure to add the new loader(s) before the "file" loader.
-          ],
-        },
-      ],
+          ]
+        }
+      ]
     },
     plugins: [
       plugins.friendlyErrorsWebpackPlugin,
@@ -119,15 +117,15 @@ module.exports = function (webpackEnv) {
       isEnvDevelopment && plugins.watchMissingNodeModulesPlugin,
       isEnvProduction && plugins.miniCssExtractPlugin,
       plugins.ignorePlugin,
-      plugins.copyPlugin,
+      plugins.copyPlugin
     ].filter(Boolean),
     node: {
       dgram: 'empty',
       fs: 'empty',
       net: 'empty',
       tls: 'empty',
-      child_process: 'empty',
+      child_process: 'empty'
     },
-    performance: false,
-  };
-};
+    performance: false
+  }
+}
