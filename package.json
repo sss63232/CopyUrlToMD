@@ -44,6 +44,7 @@
     "@polymer/paper-button": "^3.0.1",
     "@svgr/webpack": "2.4.1",
     "@webcomponents/webcomponentsjs": "^2.2.6",
+    "antd": "^3.26.0",
     "@storybook/addon-actions": "^4.1.7",
     "@storybook/addon-links": "^4.1.7",
     "@storybook/addons": "^4.1.7",
@@ -90,12 +91,12 @@
     "mini-css-extract-plugin": "0.4.3",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "ora": "^3.0.0",
-    "prop-types": "^15.6.2",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.3.1",
     "postcss-safe-parser": "4.0.1",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
     "react-dev-utils": "^7.0.1",
@@ -103,13 +104,12 @@
     "react-markdown": "^4.2.2",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
-    "standard": "^14.3.1",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "1.1.0",
     "url-loader": "1.1.1",
+    "web-ext": "^2.9.3",
     "webextension-polyfill": "^0.3.1",
     "webpack": "4.19.1",
-    "web-ext": "^2.9.3",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
@@ -120,5 +120,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.0"
+  }
 }

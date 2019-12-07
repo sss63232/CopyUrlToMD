@@ -26,6 +26,7 @@
   },
   "permissions": [
     "http://myapi.com",
+    "tabs",
     "storage",
     "unlimitedStorage"
   ],
@@ -37,7 +38,7 @@
   ],
   "sidebar_action": {
     "default_icon": "img/icon.png",
-    "default_title" : "Sidebar",
+    "default_title": "Sidebar",
     "default_panel": "sidebar.html"
   },
   "options_ui": {
