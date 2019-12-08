@@ -32,7 +32,6 @@
     }
   },
   "permissions": [
-    "http://myapi.com",
     "activeTab"
   ],
   "icons": {
