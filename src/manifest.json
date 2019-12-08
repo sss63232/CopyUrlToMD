@@ -33,7 +33,7 @@
   },
   "permissions": [
     "http://myapi.com",
-    "tabs"
+    "activeTab"
   ],
   "icons": {
     "16": "img/icons/icon-16.png",
