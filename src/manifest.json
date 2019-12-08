@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "manifest_version": 2,
-  "name": "copy the current url to MD format",
-  "description": "Modern React boilerplate for Firefox and Chrome extensions.",
+  "name": "CopyUrlToMD",
+  "description": "copy the current url into your system clipboard with Markdown formatted.",
   "content_scripts": [
     {
       "matches": [
@@ -24,11 +24,16 @@
     "default_icon": "img/icons/icon-16.png",
     "default_popup": "popup.html"
   },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+C"
+      }
+    }
+  },
   "permissions": [
     "http://myapi.com",
-    "tabs",
-    "storage",
-    "unlimitedStorage"
+    "tabs"
   ],
   "icons": {
     "16": "img/icons/icon-16.png",
