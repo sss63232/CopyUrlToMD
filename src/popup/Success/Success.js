@@ -7,7 +7,7 @@ const renderMarkdown = (mdString = '') => <ReactMarkdown source={mdString} />
 const Success = props => {
   const { copiedLink } = props
 
-  const mdFormattedLink = renderMarkdown(copiedLink)
+  const mdRenderedLink = renderMarkdown(copiedLink)
 
   return (
     <div>
@@ -19,9 +19,8 @@ const Success = props => {
           <div>
             <h2>Source code in clipboard</h2>
             <span>{copiedLink}</span>
-            <h2>will be rendered as </h2>
-
-            {mdFormattedLink}
+            <h2>Will be rendered as </h2>
+            {mdRenderedLink}
           </div>
         }
       />

@@ -42,6 +42,14 @@ module.exports = function (webpackEnv) {
 
   const entry = {}
   entryArray.forEach(obj => { Object.assign(entry, obj) })
+  /**
+   * TODO:
+   * [JavaScript | 使用 Await 及 Async 還需要一些什麼？ feat.Webpack, Babel](https://medium.com/enjoy-life-enjoy-coding/javascript-%E4%BD%BF%E7%94%A8-await-%E5%8F%8A-async-%E9%82%84%E9%9C%80%E8%A6%81%E4%B8%80%E4%BA%9B%E4%BB%80%E9%BA%BC-feat-webpack-babel-39a803a925f1)
+   */
+  Object.keys(entry).forEach(key => {
+    const value = entry[key]
+    entry[key] = ['@babel/polyfill', value]
+  })
 
   return {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
