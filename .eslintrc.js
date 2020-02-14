@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     browser: true,
+    webextensions:true,
     commonjs: true,
     es6: true,
     node: true,

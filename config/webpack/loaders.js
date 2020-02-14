@@ -86,6 +86,7 @@ const getLoaders = (isEnvProduction = false, isEnvDevelopment = true, shouldUseR
       ),
 
       plugins: [
+        'lodash',
         [
           require.resolve('babel-plugin-named-asset-import'),
           {

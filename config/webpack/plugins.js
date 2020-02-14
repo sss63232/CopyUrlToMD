@@ -11,6 +11,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const LodashWebpackPlugin = require('lodash-webpack-plugin')
 
 const paths = require('../paths')
 const staticFiles = require('./static-files')
@@ -133,6 +134,7 @@ const getPlugins = (isEnvProduction = false, shouldUseSourceMap = false) => {
   const moduleScopePlugin = new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson])
   const copyPlugin = new CopyPlugin(staticFiles.copyPatterns)
   const friendlyErrorsWebpackPlugin = new FriendlyErrorsWebpackPlugin()
+  const lodashWebpackPlugin = new LodashWebpackPlugin()
 
   return {
     optionsHtmlPlugin,
@@ -148,6 +150,7 @@ const getPlugins = (isEnvProduction = false, shouldUseSourceMap = false) => {
     moduleScopePlugin,
     copyPlugin,
     htmlIncAssetsPlugin,
+    lodashWebpackPlugin,
     friendlyErrorsWebpackPlugin
   }
 }

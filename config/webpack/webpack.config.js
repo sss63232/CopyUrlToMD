@@ -116,6 +116,7 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
       plugins.friendlyErrorsWebpackPlugin,
+      plugins.lodashWebpackPlugin,
       doesOptionsHtmlExist && plugins.optionsHtmlPlugin,
       doesPopupHtmlExist && plugins.popupHtmlPlugin,
       doesSidebarHtmlExist && plugins.sidebarHtmlPlugin,
