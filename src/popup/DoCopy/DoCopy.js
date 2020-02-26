@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import _ from 'lodash'
 
 import { copyHandler } from '../../background/copyHandler'
 import { Row, Button } from 'antd'
@@ -23,18 +22,16 @@ const DoCopy = props => {
       setCopiedUrl('')
 
       const copyTarget = async () => {
-        if (!_.isEmpty(target)) {
-          try {
-            const {
-              copiedText,
-              hasCopiedSuccessfully
-            } = await copyHandler(target)
+        try {
+          const {
+            copiedText,
+            hasCopiedSuccessfully
+          } = await copyHandler(target)
 
-            setHasCopied(hasCopiedSuccessfully)
-            setCopiedUrl(copiedText)
-          } catch (error) {
+          setHasCopied(hasCopiedSuccessfully)
+          setCopiedUrl(copiedText)
+        } catch (error) {
 
-          }
         }
       }
 
