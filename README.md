@@ -8,13 +8,13 @@ CopyUrlToMD is a utility browser extension to help you copy the URL of certain t
 
 ## Downloads
 
-[CopyUrlToMD - Chrome Web Store](https://chrome.google.com/webstore/detail/copyurltomd/abgbcgpkejdjlhobkhpcnnlpnbacenfj) 
+[CopyUrlToMD - Chrome Web Store](https://chrome.google.com/webstore/detail/copyurltomd/abgbcgpkejdjlhobkhpcnnlpnbacenfj)
 
 
 
 ## Usage
 
-1. install [CopyUrlToMD - Chrome Web Store](https://chrome.google.com/webstore/detail/copyurltomd/abgbcgpkejdjlhobkhpcnnlpnbacenfj) 
+1. install [CopyUrlToMD - Chrome Web Store](https://chrome.google.com/webstore/detail/copyurltomd/abgbcgpkejdjlhobkhpcnnlpnbacenfj)
 2. clicking on the icon or by pressing  `⌥+c` in macOS, `alt+c` in Windows
 
 
@@ -48,10 +48,16 @@ $ npm run storybook
 
 ![dev gif](screenshots/runExtension.gif)
 
-* If you want to load your unpacked extension by yourself, then run `npm run dev`. This will create the extension inside an **dev** folder in `development` mode and will watch the `src` folder for changes.   
+* If you want to load your unpacked extension by yourself, then run `npm run dev`. This will create the extension inside an **dev** folder in `development` mode and will watch the `src` folder for changes.
 * [Load unpacked extensions](https://developer.chrome.com/extensions/getstarted#unpacked) with `./dev` folder. Though you have to reload the extension by yourself every time the `./dev` folder updates.
 
+### Browser Extensions Development References
 
+If you have no idea about how to develope a Browser Extension, please read:
+
+1. [Browser support for JavaScript APIs - Mozilla | MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Browser_support_for_JavaScript_APIs)
+
+2. [GitHub - sxei/chrome-plugin-demo: 《Chrome插件开发全攻略》配套完整Demo，欢迎clone体验](https://github.com/sxei/chrome-plugin-demo)
 
 ## Build
 
@@ -76,5 +82,5 @@ Contributions are highly welcome. Please take some time to read the guidelines m
 
 ## Created By
 
-If you like this, follow me on [New's News](https://blog.newtchen.me/) 
+If you like this, follow me on [New's News](https://blog.newtchen.me/)
 
