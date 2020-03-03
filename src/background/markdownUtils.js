@@ -1,8 +1,5 @@
-/**
- *  get the title and url transformed into Markdown format
- *
- */
-export const getTabLink = (tab, options = {}) => {
+
+const getTitleUrl = (tab, options) => {
   const {
     hasUrl = true,
     hasTitle = true
@@ -14,12 +11,31 @@ export const getTabLink = (tab, options = {}) => {
   } = tab
 
   if (hasUrl && hasTitle) {
-    return `* [${title}](${url}) \n`
+    return `[${title}](${url})`
   }
 
   if (hasUrl) {
-    return `* ${url} \n`
+    return url
   }
 
-  return `* ${title} \n`
+  return title
+}
+
+/**
+ *  get the title and url transformed into Markdown format
+ *
+ */
+export const getTabLink = (tab, options = {}) => {
+  const {
+    hasUrl = true,
+    hasTitle = true,
+    unorderedList = true
+  } = options
+
+  const titleUrl = getTitleUrl(tab, { hasUrl, hasTitle })
+  if (unorderedList) {
+    return `* ${titleUrl}\n`
+  }
+
+  return `${titleUrl}\n`
 }

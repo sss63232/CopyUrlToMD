@@ -14,7 +14,7 @@ const DoCopy = props => {
   const [hasCopied, setHasCopied] = useState(false)
   const [copiedUrl, setCopiedUrl] = useState('')
 
-  const target = useGetSyncTarget()
+  const target = useGetSyncTarget({ highlightedTabsFirst: true })
 
   useEffect(
     () => {
@@ -64,12 +64,18 @@ const DoCopy = props => {
         }}
       >
         {
-          hasCopied && (
-            <Success
-              target={target}
-              copiedLink={copiedUrl}
-            />
-          )
+          hasCopied
+            ? (
+              (
+                <Success
+                  target={target}
+                  copiedLink={copiedUrl}
+                />
+              )
+            )
+            : (
+              <h3>loading</h3>
+            )
         }
       </div>
     </>

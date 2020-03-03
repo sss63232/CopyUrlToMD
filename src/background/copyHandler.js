@@ -2,6 +2,7 @@ import { TARGET_TAB_TYPE, TARGET_CONTENT_TYPE } from '../constants/tab'
 import { getTabLink } from './markdownUtils'
 import { getTabsByQuerying } from './browserTabsUtils'
 import copy from 'copy-to-clipboard'
+import _ from 'lodash'
 
 export const getTabLinkOption = targetContentType => {
   let option = {}
@@ -31,8 +32,17 @@ export const copyHandler = async target => {
 
   const mdLinkOption = getTabLinkOption(targetContentType)
 
-  const getTextByTab = tab => getTabLink(tab, mdLinkOption)
-  const getJoinedTextByTabs = tabs => tabs.map(getTextByTab).join(' ')
+  const getJoinedTextByTabs = tabs => {
+    if (tabs.length > 1) {
+      const getTextByTab = tab => getTabLink(tab, mdLinkOption)
+      return tabs.map(getTextByTab).join(' ')
+    } else {
+      return getTabLink(_.head(tabs), {
+        ...mdLinkOption,
+        unorderedList: false
+      })
+    }
+  }
 
   let selectedTabs = []
   try {
