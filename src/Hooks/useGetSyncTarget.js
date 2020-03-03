@@ -13,7 +13,7 @@ const DEFAULT_TARGET = {
   [TARGET_CONTENT_TYPE_KEY]: TARGET_CONTENT_TYPE.BOTH_TITLE_URL
 }
 
-const useGetSyncTarget = options => {
+const useGetSyncTarget = (options = {}) => {
   const {
     highlightedTabsFirst
   } = options
