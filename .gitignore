@@ -1,7 +1,8 @@
 node_modules
-try.js
-old-extension
-dist
+
 extension
 dev
+
+/otherResources
+
 .vscode
