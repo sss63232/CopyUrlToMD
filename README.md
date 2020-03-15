@@ -1,5 +1,7 @@
 # CopyUrlToMD
 
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
 Built from [kryptokinght/react-extension-boilerplate](https://github.com/kryptokinght/react-extension-boilerplate)
 
 CopyUrlToMD is a utility browser extension to help you copy the URL of certain tabs into your system clipboard with Markdown-formatted.
