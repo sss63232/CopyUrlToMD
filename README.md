@@ -34,7 +34,7 @@ CopyUrlToMD is a utility browser extension to help you copy the URL of certain t
 $ git clone https://github.com/sss63232/CopyUrlToMD.git
 
 # Install dependencies
-$ cd CopyUrlToMD && yarn
+$ cd CopyUrlToMD && npm i
 ```
 ### Run
 
